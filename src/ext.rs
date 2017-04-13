@@ -43,3 +43,33 @@ pub type gss_buffer_set_desc = gss_buffer_set_desc_struct;
 pub type gss_buffer_set_t = *mut gss_buffer_set_desc_struct;
 
 pub const GSS_C_NO_BUFFER_SET: gss_buffer_set_t = 0 as *mut _;
+
+extern "C" {
+    pub fn gss_create_empty_buffer_set(minor: *mut OM_uint32,
+                                       buffer_set: *mut gss_buffer_set_t) -> OM_uint32;
+    pub fn gss_add_buffer_set_member(minor: *mut OM_uint32,
+                                     member_buffer: /* const */ gss_buffer_t,
+                                     buffer_set: gss_buffer_set_t)  -> OM_uint32;
+    pub fn gss_release_buffer_set(minor: *mut OM_uint32,
+                                  buffer_set: *mut gss_buffer_set_t) -> OM_uint32;
+    pub fn gss_inquire_sec_context_by_oid(minor: *mut OM_uint32,
+                                          context_handle: /* const */ gss_ctx_id_t,
+                                          desired_object: /* const */ gss_OID,
+                                          data_set: *mut gss_buffer_set_t) -> OM_uint32;
+    pub fn gss_inquire_cred_by_oid(minor: *mut OM_uint32,
+                                   cred_handle: /* const */ gss_cred_id_t,
+                                   desired_object: /* const */ gss_OID,
+                                   data_set: gss_buffer_set_t) -> OM_uint32;
+    pub fn gss_set_sec_context_option(minor: *mut OM_uint32,
+                                      cred_handle: *mut gss_ctx_id_t,
+                                      desired_object: /* const */ gss_OID,
+                                      value: /* const */ gss_buffer_t) -> OM_uint32;
+    pub fn gss_set_cred_option(minor: *mut OM_uint32,
+                               cred: *mut gss_cred_id_t,
+                               desired_object: /* const */ gss_OID,
+                               value: /* const */ gss_buffer_t) -> OM_uint32;
+    pub fn gssspi_mech_invoke(minor: *mut OM_uint32,
+                              desired_mech: /* const */ gss_OID,
+                              desired_object: /* const */ gss_OID,
+                              value: gss_buffer_t) -> OM_uint32;
+}
