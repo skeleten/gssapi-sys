@@ -3,4 +3,8 @@ name = "gssapi-sys"
 version = "0.1.0"
 authors = ["Jan Pelle Thomson <thomson@vkm.tu-darmstadt.de>"]
 
+[features]
+default = []
+om_string = []
+
 [dependencies]
