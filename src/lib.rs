@@ -4,6 +4,11 @@
 use std::os::raw::*;
 
 pub mod ext;
+#[cfg(feature = "krb5")]
+pub mod krb5;
+
+#[cfg(feature = "krb5")]
+extern crate krb5_sys;
 
 // TODO: Doc
 pub enum gss_name_struct { }
