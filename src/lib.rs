@@ -4,6 +4,9 @@
 use std::os::raw::*;
 
 pub mod ext;
+pub mod generic;
+pub mod mechglue;
+
 #[cfg(feature = "krb5")]
 pub mod krb5;
 

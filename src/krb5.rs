@@ -1,12 +1,13 @@
 use super::*;
 use ::krb5_sys::*;
 
+#[link(name = "gssapi_krb5")]
 extern "C" {
     pub static GSS_KRB5_NT_PRINCIPAL_NAME: *const gss_OID_desc;
 }
 
 // TODO: defines here
-
+#[link(name = "gssapi_krb5")]
 extern "C" {
     pub static gss_mech_krb5: *const gss_OID_desc;
     pub static gss_mech_krb5_old: *const gss_OID_desc;
@@ -74,6 +75,7 @@ pub type gss_krb5_lucid_context_version_t = gss_krb5_lucid_context_version;
 
 // TODO: define here
 
+#[link(name = "gssapi_krb5")]
 extern "C" {
     pub fn krb5_gss_register_acceptor_identity(arg: *const c_char) -> OM_uint32;
     pub fn gss_krb5_get_tkt_flags(minor: *mut OM_uint32,
