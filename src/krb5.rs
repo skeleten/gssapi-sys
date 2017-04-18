@@ -107,4 +107,9 @@ extern "C" {
     pub fn gsskrb5_extract_authtime_from_sec_context(minor: *mut OM_uint32,
                                                      ctx_handle: gss_ctx_id_t,
                                                      timestamp_out: *mut krb5_timestamp) -> OM_uint32;
+    pub fn gss_krb5_import_cred(minor: *mut OM_uint32,
+                                id: krb5_ccache,
+                                keytab_principal: krb5_principal,
+                                keytab: krb5_keytab,
+                                cred: *mut gss_cred_id_t) -> OM_uint32;
 }
